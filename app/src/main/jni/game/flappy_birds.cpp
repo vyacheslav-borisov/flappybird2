@@ -679,6 +679,8 @@ namespace pegas
 
 			if(isOnTheGround(offset))
 			{
+				LOGI("Bird grounded");
+				
 				m_mode = k_modeDead;
 
 				//TODO: временный код
