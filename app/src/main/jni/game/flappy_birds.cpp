@@ -681,8 +681,8 @@ namespace pegas
 			{
 				m_mode = k_modeDead;
 
-				//TODO: ��������� ���
-				//���������� ���� ������ �������������� ����� ����
+				//TODO: временный код
+				//рестарт игры производить из меню.
 				EventPtr finalEvent(new Event_Game_Restart());
 
 				Waiting* waiting = new Waiting(1.0f);
