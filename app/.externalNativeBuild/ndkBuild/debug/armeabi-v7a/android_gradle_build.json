@@ -1,0 +1,448 @@
+{
+  "buildFiles": [
+    "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk",
+    "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib clean"
+  ],
+  "libraries": {
+    "pegas_gui-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_gui.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_gui",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\fader_layer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\gui_layer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\standart_widgets.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_gui.a"
+    },
+    "png-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpng.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "png",
+      "files": [
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\png.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngerror.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngget.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngmem.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngpread.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngread.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrio.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrtran.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrutil.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngset.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngtrans.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwio.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwrite.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwtran.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwutil.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpng.a"
+    },
+    "android_native_app_glue-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libandroid_native_app_glue.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "android_native_app_glue",
+      "files": [
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\android\\native_app_glue\\android_native_app_glue.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libandroid_native_app_glue.a"
+    },
+    "pegas_app-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_app.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_app",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\android_game_application.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\base_game_application.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\common_events.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\default_game_state.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\event_system.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\game_state_manager.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\processes.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\waiting.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_app.a"
+    },
+    "game-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libgame.so",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "game",
+      "files": [
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\android\\native_app_glue\\android_native_app_glue.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\png.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngerror.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngget.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngmem.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngpread.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngread.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrio.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrtran.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngrutil.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngset.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngtrans.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwio.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwrite.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwtran.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\sources\\libpng\\pngwutil.c",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\android_game_application.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\base_game_application.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\common_events.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\default_game_state.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\event_system.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\game_state_manager.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\processes.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\app\\waiting.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\core\\math_utils.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\core\\types.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\GLES10_renderer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\atlas.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\scene.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\sprite.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\texture.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\fader_layer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\gui_layer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gui\\standart_widgets.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\physics\\base_physics.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\physics\\collisions.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\event_loop.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\interfaces.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\log.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\resource.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\timer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\flappy_birds.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\game_screen.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\main.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\test.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../app\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gui\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libgame.so"
+    },
+    "pegas_gfx-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_gfx.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_gfx",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\GLES10_renderer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\atlas.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\scene.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\sprite.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\gfx\\texture.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../gfx\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_gfx.a"
+    },
+    "pegas_core-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_core.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_core",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\core\\math_utils.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\core\\types.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../core\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_core.a"
+    },
+    "pegas_system-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_system.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_system",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\event_loop.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\interfaces.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\log.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\resource.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\system\\timer.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../system\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_system.a"
+    },
+    "pegas_physics-debug-armeabi-v7a": {
+      "buildCommand": "C:\\Android\\NDK\\android-ndk-r12b\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dC:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dC:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\lib C:/Android/Projects/ZLFlappyBirds_2/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libpegas_physics.a",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "pegas_physics",
+      "files": [
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\physics\\base_physics.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        },
+        {
+          "src": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\src\\main\\jni\\game\\..\\physics\\collisions.cpp",
+          "flags": "\"-fpic\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-no-canonical-prefixes\" \"-g\" \"-march\u003darmv7-a\" \"-mfpu\u003dvfpv3-d16\" \"-mfloat-abi\u003dsoftfp\" \"-fno-exceptions\" \"-fno-rtti\" \"-mthumb\" \"-O0\" \"-UNDEBUG\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/android/native_app_glue\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/libpng\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl/stlport/stlport\" \"-IC:/Android/NDK/android-ndk-r12b/build//../sources/cxx-stl//gabi++/include\" \"-IC:/Android/Projects/ZLFlappyBirds_2/app/src/main/jni/game/../physics\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-frtti\" \"-fexceptions\" \"-isystem\" \"C:/Android/NDK/android-ndk-r12b/build//../platforms/android-14/arch-arm/usr/include\""
+        }
+      ],
+      "output": "C:\\Android\\Projects\\ZLFlappyBirds_2\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\armeabi-v7a\\libpegas_physics.a"
+    }
+  },
+  "toolchains": {
+    "toolchain-armeabi-v7a": {
+      "cCompilerExecutable": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\toolchains\\arm-linux-androideabi-4.9\\prebuilt\\windows-x86_64\\bin\\arm-linux-androideabi-gcc",
+      "cppCompilerExecutable": "C:\\Android\\NDK\\android-ndk-r12b\\build\\..\\toolchains\\arm-linux-androideabi-4.9\\prebuilt\\windows-x86_64\\bin\\arm-linux-androideabi-g++"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
