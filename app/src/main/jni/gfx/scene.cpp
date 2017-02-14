@@ -58,7 +58,10 @@ namespace pegas
 		for(std::list<SceneNode*>::iterator it = nodesToRender.begin();
 				it != nodesToRender.end(); ++it)
 		{
-			(*it)->render(gfx);
+			if((*it)->isVisible())
+			{
+				(*it)->render(gfx);
+			}
 		}
 	}
 
@@ -132,11 +135,16 @@ namespace pegas
 	//	SceneNode class implementation
 	//-----------------------------------------------------------------------------
 	SceneNode::SceneNode(SceneNode* parentNode)
-		:m_parentNode(parentNode), m_zIndex(1.0f)
+		:m_parentNode(parentNode), m_zIndex(1.0f), m_visible(true)
 	{
 		LOGD_LOOP("SceneNode constructor [this: 0x%X]", this);
 
 		m_transform.identity();
+
+		if(m_parentNode != NULL)
+		{
+			m_parentNode->attachChild(this);
+		}
 	}
 
 	SceneNode::~SceneNode()
@@ -187,9 +195,12 @@ namespace pegas
 
 			if(deleteChild)
 			{
+				LOGI("deleting child 0x%X", childNode);
 				delete (*it);
 			}
 			m_childsNodes.erase(it);
+
+			LOGI("SceneNode 0x%X removed", childNode);
 		}
 	}
 
@@ -215,6 +226,12 @@ namespace pegas
 		m_transform = transform;
 
 		notifyListeners(k_transfromChanged);
+
+		for(ChildNodeListIt it = m_childsNodes.begin();
+			it != m_childsNodes.end(); ++it)
+		{
+			(*it)->notifyListeners(k_transfromChanged);
+		}
 	}
 
 	Matrix4x4  SceneNode::getLocalTransform()
@@ -251,9 +268,33 @@ namespace pegas
 
 	void SceneNode::addListener(SceneNodeEventListener* listener)
 	{
-		LOGD_LOOP("SceneNode::setListener [this: 0x%X, listener: 0x%X]", this, listener);
+		LOGD_LOOP("SceneNode::addListener [this: 0x%X, listener: 0x%X]", this, listener);
 
-		m_listeners.push_back(listener);
+		ListenersIt found_it = std::find(m_listeners.begin(), m_listeners.end(), listener);
+		if(found_it == m_listeners.end())
+		{
+			m_listeners.push_back(listener);
+		}
+	}
+
+	void SceneNode::removeListener(SceneNodeEventListener* listener)
+	{
+		LOGD_LOOP("SceneNode::removeListener [this: 0x%X, listener: 0x%X]", this, listener);
+
+
+		ListenersIt found_it = std::find(m_listeners.begin(), m_listeners.end(), listener);
+		if(found_it != m_listeners.end())
+		{
+			m_listeners.erase(found_it);
+			LOGI("listener removed");
+		}
+	}
+
+	void SceneNode::removeListenerSafe(SceneNodeEventListener* listener)
+	{
+		LOGD_LOOP("SceneNode::removeListenerSafe [this: 0x%X, listener: 0x%X]", this, listener);
+
+		m_removedListeners.push_back(listener);
 	}
 
 	void SceneNode::notifyListeners(SceneNodeEventType e, SceneNode* child)
@@ -287,6 +328,12 @@ namespace pegas
 				break;
 			};
 		}
+
+		for(ListenersIt it = m_removedListeners.begin(); it != m_removedListeners.end(); it++)
+		{
+			removeListener(*it);
+		}
+		m_removedListeners.clear();
 	}
 }
 

@@ -209,8 +209,13 @@ namespace pegas
 		static const int32 k_collisionGroup;
 
 	public:
-		Trigger() {}
+		Trigger(): m_isTriggered(false) {}
 		virtual std::string getName() { return k_name; }
+
+		virtual void onCollission(GameObject* other);
+
+	private:
+		bool m_isTriggered;
 	};
 
 	class Obstacle: public CollidableObject
@@ -222,6 +227,36 @@ namespace pegas
 	public:
 		Obstacle() {}
 		virtual std::string getName() { return k_name; }
+	};
+
+	class ScoreBoard : public GameObject, public IEventListener
+	{
+	public:
+		static const std::string k_name;
+
+	public:
+		virtual std::string getName()  { return k_name; }
+
+		virtual void onCreate(IPlatformContext* context, void* pData);
+		virtual void onDestroy(IPlatformContext* context);
+		virtual void onCreateSceneNode(Atlas* atlas, SceneManager* sceneManager, const Vector3& spawnPoint);
+
+		virtual ListenerType getListenerName() { return k_name; }
+		virtual void handleEvent(EventPtr evt);
+
+	private:
+		void updateBoard();
+
+		int32 m_scores;
+
+		enum
+		{
+			k_numDigits = 6
+		};
+
+		SceneNode* m_boardSceneNode;
+		SceneNode* m_digitNodes[k_numDigits];
+		SpritePtr m_digits[k_numDigits];
 	};
 }
 

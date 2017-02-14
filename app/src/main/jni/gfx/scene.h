@@ -39,6 +39,10 @@ namespace pegas
 		void removeAllChilds(bool deleteChild = false);
 
 		void addListener(SceneNodeEventListener* listener);
+		//ВАЖНО!!! не вызывать из методов обработчиков SceneNodeEventListener
+		//вместо них использовать removeListenerSafe
+		void removeListener(SceneNodeEventListener* listener);
+		void removeListenerSafe(SceneNodeEventListener* listener);
 
 		virtual void setTransfrom(const Matrix4x4& transform);
 		virtual Matrix4x4  getLocalTransform();
@@ -50,7 +54,9 @@ namespace pegas
 		virtual void render(Gfx* gfx);
 		virtual Rect2D getBoundBox();
 
-	private:
+		void setVisible(bool visible) { m_visible = visible; }
+		bool isVisible() const { return m_visible; }
+	protected:
 		enum SceneNodeEventType
 		{
 			k_transfromChanged = 0,
@@ -61,6 +67,7 @@ namespace pegas
 		};
 		void notifyListeners(SceneNodeEventType e, SceneNode* child = NULL);
 
+	private:
 		typedef std::list<SceneNode*> ChildNodeList;
 		typedef ChildNodeList::iterator ChildNodeListIt;
 		typedef std::list<SceneNodeEventListener*> Listeners;
@@ -68,9 +75,11 @@ namespace pegas
 
 		SceneNode* m_parentNode;
 		Listeners  m_listeners;
+		Listeners  m_removedListeners;
 		ChildNodeList m_childsNodes;
 		Matrix4x4 m_transform;
 		float	  m_zIndex;
+		bool 	  m_visible;
 
 	private:
 		SceneNode(const SceneNode& other);

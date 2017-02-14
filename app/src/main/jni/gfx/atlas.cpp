@@ -115,7 +115,7 @@ namespace pegas
 					LOGI("adding sprite: %s", name.c_str());
 
 					SpritePtr sprite = SpritePtr(new Sprite(m_texture.get()));
-					m_sprites[name] = sprite;
+					m_spriteMap[name] = sprite;
 
 					xmlNodeFrame = xmlNodeSprite->first_node("frame");
 					while(xmlNodeFrame != NULL)
@@ -167,15 +167,23 @@ namespace pegas
 			LOGI("Atlas::unload");
 
 			m_texture->unload();
-			m_sprites.clear();
-			m_animations.clear();
+			m_spriteMap.clear();
+			m_animationMap.clear();
 		}
 
 		SpritePtr Atlas::getSprite(const std::string& name)
 		{
-			if(m_sprites.count(name) > 0)
+			if(m_spriteMap.count(name) > 0)
 			{
-				return m_sprites[name];
+				SpritePtr result(new Sprite());
+
+				Sprite* a = result.get();
+				Sprite* b = m_spriteMap[name].get();
+
+				(*a) = (*b);
+
+				return result;
+				//return m_spriteMap[name];
 			}
 
 			return NULL;
@@ -183,9 +191,9 @@ namespace pegas
 
 		ProcessPtr Atlas::getAnimation(const std::string& name)
 		{
-			if(m_animations.count(name) > 0)
+			if(m_animationMap.count(name) > 0)
 			{
-				return m_animations[name];
+				return m_animationMap[name];
 			}
 
 			return NULL;

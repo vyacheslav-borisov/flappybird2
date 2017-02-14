@@ -37,6 +37,7 @@ namespace pegas
 		};
 
 	public:
+		explicit Sprite();
 		Sprite(Texture* texture);
 
 		void addFrame(const Frame& frame);
@@ -63,10 +64,16 @@ namespace pegas
 		int32  m_pivot;
 	};
 
-	class SpriteSceneNode: public SceneNode
+	typedef SmartPointer<Sprite> SpritePtr;
+
+	class SpriteSceneNode: public SceneNode, public SceneNodeEventListener
 	{
 	public:
-		SpriteSceneNode(Sprite* sprite, SceneNode* parentNode = NULL);
+		SpriteSceneNode(SpritePtr sprite, SceneNode* parentNode = NULL);
+
+		virtual void onTransfromChanged(SceneNode* sender);
+		virtual void onChildRemove(SceneNode* sender, SceneNode* child);
+		virtual void onChildDettach(SceneNode* sender, SceneNode* child);
 
 		virtual void setTransfrom(const Matrix4x4& transform);
 		virtual Rect2D getBoundBox();
@@ -83,7 +90,7 @@ namespace pegas
 			k_totalPoints
 		};
 
-		Sprite* m_sprite;
+		SpritePtr m_sprite;
 		Vector3 m_cachedPoints[4];
 		Rect2D  m_cachedAABB;
 		bool 	m_recalcAABB;
@@ -99,7 +106,7 @@ namespace pegas
 		};
 
 	public:
-		SpriteAnimation(Sprite* sprite, int32 flags = k_modeLooped);
+		SpriteAnimation(SpritePtr sprite, int32 flags = k_modeLooped);
 		~SpriteAnimation();
 
 		void setNumFrames(int32 startFrame, int32 numFrames);
@@ -112,7 +119,7 @@ namespace pegas
 		virtual void start(ProcessHandle myHandle, ProcessManagerPtr owner);
 
 	private:
-		Sprite* m_sprite;
+		SpritePtr m_sprite;
 		int32 m_startFrame;
 		int32 m_numFrames;
 		int32 m_fps;
@@ -121,7 +128,7 @@ namespace pegas
 		MILLISECONDS m_ellapsedTime;
 	};
 
-	typedef SmartPointer<Sprite> SpritePtr;
+
 	typedef SmartPointer<SpriteAnimation> SpriteAnimationPtr;
 }
 

@@ -23,11 +23,17 @@ namespace pegas
 		typedef std::map<std::string, ProcessPtr> AnimationMap;
 		typedef AnimationMap::iterator AnimationMapIt;
 
+		//typedef std::list<SpritePtr> SpriteList;
+		//typedef std::list<ProcessPtr> AnimationList;
+
 		android_app* m_context;
 		std::string  m_path;
 		TexturePtr 	 m_texture;
-		SpriteMap	 m_sprites;
-		AnimationMap m_animations;
+		SpriteMap	 m_spriteMap;
+		AnimationMap m_animationMap;
+
+		//SpriteList m_sprites;
+		//AnimationList m_animations;
 	private:
 		void parseCoords(Sprite::Frame& frame, const std::string& coords, bool pixels);
 

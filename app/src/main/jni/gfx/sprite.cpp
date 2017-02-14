@@ -9,6 +9,12 @@ namespace pegas
 	//------------------------------------------------------------------------
 	// Sprite class implementation
 	//------------------------------------------------------------------------
+	Sprite::Sprite()
+		:m_texture(NULL), m_currentFrame(-1), m_pivot(k_pivotCenter)
+	{
+
+	}
+
 	Sprite::Sprite(Texture* texture)
 		:m_texture(texture), m_currentFrame(-1), m_pivot(k_pivotCenter)
 	{
@@ -88,10 +94,13 @@ namespace pegas
 	//----------------------------------------------------------------------
 	// 	SpriteSceneNode class implementation
 	//----------------------------------------------------------------------
-	SpriteSceneNode::SpriteSceneNode(Sprite* sprite, SceneNode* parentNode)
+	SpriteSceneNode::SpriteSceneNode(SpritePtr sprite, SceneNode* parentNode)
 		:SceneNode(parentNode), m_sprite(sprite), m_recalcAABB(false)
 	{
-
+		if(parentNode != NULL)
+		{
+			parentNode->addListener(this);
+		}
 	}
 
 	void SpriteSceneNode::setTransfrom(const Matrix4x4& transform)
@@ -99,6 +108,29 @@ namespace pegas
 		m_recalcAABB = true;
 
 		SceneNode::setTransfrom(transform);
+	}
+
+	void SpriteSceneNode::onTransfromChanged(SceneNode* sender)
+	{
+		//родительский узел изменил положение или размер
+		//мы также должны пересчитать позицию
+		recalcAABB();
+	}
+
+	void SpriteSceneNode::onChildRemove(SceneNode* sender, SceneNode* child)
+	{
+		if(child == this)
+		{
+			getParentNode()->removeListenerSafe(this);
+		}
+	}
+
+	void SpriteSceneNode::onChildDettach(SceneNode* sender, SceneNode* child)
+	{
+		if(child == this)
+		{
+			getParentNode()->removeListenerSafe(this);
+		}
 	}
 
 	Rect2D SpriteSceneNode::getBoundBox()
@@ -221,7 +253,7 @@ namespace pegas
 	//---------------------------------------------------------------------------------------------------
 	//	SpriteAnimation class implementation
 	//---------------------------------------------------------------------------------------------------
-	SpriteAnimation::SpriteAnimation(Sprite* sprite, int32 flags)
+	SpriteAnimation::SpriteAnimation(SpritePtr sprite, int32 flags)
 		:m_sprite(sprite),
 		 m_flags(flags),
 		 m_startFrame(0),
