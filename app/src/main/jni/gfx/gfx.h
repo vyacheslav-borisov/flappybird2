@@ -15,6 +15,7 @@ namespace pegas
     	GLfloat   m_vertices[12];
     	GLfloat   m_textureCoords[8];
     	float	  m_zIndex;
+		float 	  m_alpha;
 
     	bool operator<(const RenderQueueItem& other) const
     	{

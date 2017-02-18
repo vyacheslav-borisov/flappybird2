@@ -33,6 +33,12 @@
     <sprite name="game_over" >
         <frame coords="782 115 985 160" ></frame>
     </sprite>
+	<sprite name="scores_panel" >
+        <frame coords="4 516 232 633" ></frame>
+    </sprite>
+	<sprite name="tutorial" >
+        <frame coords="584 177 698 281" ></frame>
+    </sprite>
     <sprite name="digit_big" >
         <frame coords="990 118 1017 156" ></frame>
         <frame coords="270 907 291 948" ></frame>
@@ -44,5 +50,11 @@
         <frame coords="610 365 637 405" ></frame>
         <frame coords="638 365 665 405" ></frame>
         <frame coords="666 365 694 405" ></frame>
-    </sprite>    
+    </sprite>
+	<sprite name="white_quad" >
+        <frame coords="584 447 616 479" ></frame>
+    </sprite>
+	<sprite name="black_quad" >
+        <frame coords="584 412 616 444" ></frame>
+    </sprite>	
 </atlas>

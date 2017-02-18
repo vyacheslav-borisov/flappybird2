@@ -54,8 +54,8 @@ namespace pegas
 		virtual void render(Gfx* gfx);
 		virtual Rect2D getBoundBox();
 
-		void setVisible(bool visible) { m_visible = visible; }
-		bool isVisible() const { return m_visible; }
+		void setVisible(bool visible);
+		bool isVisible() const;
 	protected:
 		enum SceneNodeEventType
 		{

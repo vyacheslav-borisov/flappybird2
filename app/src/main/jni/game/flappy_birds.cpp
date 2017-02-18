@@ -61,6 +61,19 @@ namespace pegas
 	};
 	const EventType Event_Bird_Dead::k_type = "Event_Bird_Dead";
 
+	struct Event_Show_Flash: public Event
+	{
+	public:
+		Event_Show_Flash()
+		{
+			LOGI("Event_Show_Flash()");
+		}
+
+		virtual EventType getType() const { return k_type; }
+		static const EventType k_type;
+	};
+	const EventType Event_Show_Flash::k_type = "Event_Show_Flash";
+
 
 	//==============================================================================
 	const int32 Bird::k_collisionGroup = 1;
@@ -103,7 +116,7 @@ namespace pegas
 
 	////////////////////////////////////////////////////////////////////////////////////
 	GameWorld::GameWorld()
-		:m_gameStarted(false), m_columnsSpawned(0)
+		:m_gameStarted(false), m_columnsSpawned(0), m_getReadyScreen(NULL)
 	{
 	}
 
@@ -116,6 +129,8 @@ namespace pegas
 		eventManager->addEventListener(this, Event_Game_Restart::k_type);
 		eventManager->addEventListener(this, Event_Game_Stop::k_type);
 		eventManager->addEventListener(this, Event_Create_NextColumn::k_type);
+		eventManager->addEventListener(this, Event_Show_Flash::k_type);
+		eventManager->addEventListener(this, Event_Show_Scores::k_type);
 
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Background::k_name)));
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Ground::k_name)));
@@ -130,6 +145,18 @@ namespace pegas
 
 	void GameWorld::onDestroy(IPlatformContext* context)
 	{
+		if(m_getReadyScreen != NULL)
+		{
+			SceneNode* rootNode = m_getReadyScreen->getParentNode();
+			rootNode->removeChild(m_getReadyScreen, true);
+		}
+
+		if (m_flashSceneNode != NULL)
+		{
+			SceneNode* rootNode = m_flashSceneNode->getParentNode();
+			rootNode->removeChild(m_flashSceneNode, true);
+		}
+
 		EventManager* eventManager = context->getEventManager();
 		eventManager->removeEventListener(this);
 
@@ -154,6 +181,81 @@ namespace pegas
 
 		SpritePtr bird = atlas->getSprite("bird");
 		s_columnWindowHeight = bird->height() * s_spriteScale * 3.5;
+
+		//get ready screen
+		SceneNode* rootSceneNode = sceneManager->getRootNode();
+		m_getReadyScreen = new SceneNode(rootSceneNode);
+
+		SpritePtr spriteGetReady = atlas->getSprite("get_ready");
+		spriteGetReady->setPivot(Sprite::k_pivotCenter);
+
+		SpritePtr spriteTutorial = atlas->getSprite("tutorial");
+		spriteTutorial->setPivot(Sprite::k_pivotCenter);
+
+		Matrix4x4 scale, translate, translate2;
+
+		scale.identity();
+		scale.scale(spriteGetReady->width() * s_spriteScale, spriteGetReady->height() * s_spriteScale, 1.0f);
+
+		translate.identity();
+		translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
+
+		SceneNode* sceneNodeGetReady = new SpriteSceneNode(spriteGetReady, m_getReadyScreen);
+		sceneNodeGetReady->setTransfrom(scale * translate);
+		sceneNodeGetReady->setZIndex(-6.0f);
+
+		scale.identity();
+		scale.scale(spriteTutorial->width() * s_spriteScale, spriteTutorial->height() * s_spriteScale, 1.0f);
+
+		translate2.identity();
+		translate2.translate(0.0f, (spriteTutorial->height() + spriteGetReady->height()) * s_spriteScale * 0.7f, 0.0f);
+
+		SceneNode* sceneNodeTutorial = new SpriteSceneNode(spriteTutorial, m_getReadyScreen);
+		sceneNodeTutorial->setTransfrom(scale * translate * translate2);
+		sceneNodeTutorial->setZIndex(-6.0f);
+
+		//game over screen
+		m_gameOverScreen = new SceneNode(rootSceneNode);
+		m_gameOverScreen->setVisible(false);
+
+		SpritePtr spriteGameOver = atlas->getSprite("game_over");
+		spriteGameOver->setPivot(Sprite::k_pivotCenter);
+
+		SpritePtr spriteScoresPanel = atlas->getSprite("scores_panel");
+		spriteScoresPanel->setPivot(Sprite::k_pivotCenter);
+
+		scale.identity();
+		scale.scale(spriteGetReady->width() * s_spriteScale, spriteGetReady->height() * s_spriteScale, 1.0f);
+
+		translate.identity();
+		translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
+
+		SceneNode* sceneNodeGameOver = new SpriteSceneNode(spriteGameOver, m_gameOverScreen);
+		sceneNodeGameOver->setZIndex(-6.0f);
+		sceneNodeGameOver->setTransfrom(scale * translate);
+
+		scale.identity();
+		scale.scale(spriteScoresPanel->width() * s_spriteScale, spriteScoresPanel->height() * s_spriteScale, 1.0f);
+
+		translate2.identity();
+		translate2.translate(0.0f, (spriteScoresPanel->height() + spriteGameOver->height()) * s_spriteScale * 0.7f, 0.0f);
+
+		SceneNode* sceneNodeScoresPanel = new SpriteSceneNode(spriteScoresPanel, m_gameOverScreen);
+		sceneNodeScoresPanel->setZIndex(-6.0f);
+		sceneNodeScoresPanel->setTransfrom(scale * translate * translate2);
+
+		//flash screen
+		m_flashSprite = atlas->getSprite("white_quad");
+		m_flashSprite->setPivot(Sprite::k_pivotLeftTop);
+		m_flashSprite->setAlpha(0.0f);
+
+		m_flashSceneNode = new SpriteSceneNode(m_flashSprite, rootSceneNode);
+
+		scale.identity();
+		scale.scale(screenRect.width(), screenRect.height(), 1.0f);
+
+		m_flashSceneNode->setTransfrom(scale);
+		m_flashSceneNode->setZIndex(-5.0f);
 	}
 
 	void GameWorld::onCreateCollisionHull(IPhysics* physicsManager)
@@ -177,6 +279,7 @@ namespace pegas
 
 			m_gameStarted = true;
 			m_spawnPosition._x = s_bornLine;
+			m_getReadyScreen->setVisible(false);
 
 			for(int i = 0; i < 4; i++)
 			{
@@ -190,6 +293,9 @@ namespace pegas
 
 			EventManager* eventManager = m_context->getEventManager();
 			eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name)));
+
+			m_gameOverScreen->setVisible(false);
+			m_getReadyScreen->setVisible(true);
 		}
 
 		if(evt->getType() == Event_Game_Stop::k_type)
@@ -205,15 +311,41 @@ namespace pegas
 
 			spawnNewColumn();
 		}
+
+		if(evt->getType() == Event_Show_Flash::k_type)
+		{
+			LOGI("evt->getType() == Event_Show_Flash::k_type");
+
+			m_flashSprite->setAlpha(1.0f);
+		}
+
+		if(evt->getType() == Event_Show_Scores::k_type)
+		{
+			LOGI("evt->getType() == Event_Show_Scores::k_type");
+
+			m_gameOverScreen->setVisible(true);
+		}
 	}
 
 	void GameWorld::update(MILLISECONDS deltaTime)
 	{
-		if(!m_gameStarted) return;
-
 		float dt = deltaTime / 1000.0f;
-		float offset = getColumnVelocity() * dt;
-		m_spawnPosition._x += offset;
+
+		if(m_flashSprite != NULL)
+		{
+			float alpha = m_flashSprite->getAlpha();
+			alpha -= 1.5f * dt;
+			if (alpha < 0.0f) {
+				alpha = 0.0f;
+			}
+			m_flashSprite->setAlpha(alpha);
+		}
+
+		if (m_gameStarted)
+		{
+			float offset = getColumnVelocity() * dt;
+			m_spawnPosition._x += offset;
+		}
 	}
 
 	void GameWorld::spawnNewColumn()
@@ -679,11 +811,7 @@ namespace pegas
 
 			EventManager* eventManager = m_context->getEventManager();
 			eventManager->pushEventToQueye(EventPtr(new Event_Game_Stop()));
-		}
-
-		if(other->getName() == Trigger::k_name)
-		{
-
+			eventManager->pushEventToQueye(EventPtr(new Event_Show_Flash()));
 		}
 	}
 

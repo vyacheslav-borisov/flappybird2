@@ -51,6 +51,9 @@ namespace pegas
 		void setPivot(int32 pivot);
 		int32 getPivot();
 
+		void setAlpha(float alpha) { m_alpha = alpha; }
+		float getAlpha() { return m_alpha; }
+
 		float width();
 		float height();
 
@@ -62,6 +65,7 @@ namespace pegas
 		FrameList m_frames;
 		int32  m_currentFrame;
 		int32  m_pivot;
+		float  m_alpha;
 	};
 
 	typedef SmartPointer<Sprite> SpritePtr;

@@ -43,6 +43,12 @@ namespace pegas
 		float 	m_offset;
 		bool	m_gameStarted;
 
+		SceneNode* m_getReadyScreen;
+
+		SceneNode* m_gameOverScreen;
+
+		SceneNode* m_flashSceneNode;
+		SpritePtr  m_flashSprite;
 	private:
 		static float s_columnVelocity;
 		static float s_spriteScale;

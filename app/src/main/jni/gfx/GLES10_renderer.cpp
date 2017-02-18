@@ -248,6 +248,8 @@ namespace pegas
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
+			glColor4f(1.0f, 1.0f, 1.0f, item->m_alpha);
+
 			glEnable(GL_TEXTURE_2D);
 			item->m_texture->apply();
 

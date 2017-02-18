@@ -221,6 +221,21 @@ namespace pegas
 		m_childsNodes.clear();
 	}
 
+	void SceneNode::setVisible(bool visible)
+	{
+		m_visible = visible;
+	}
+
+	bool SceneNode::isVisible() const
+	{
+		if(m_parentNode != NULL)
+		{
+			return m_visible && m_parentNode->isVisible();
+		}
+
+		return m_visible;
+	}
+
 	void SceneNode::setTransfrom(const Matrix4x4& transform)
 	{
 		m_transform = transform;

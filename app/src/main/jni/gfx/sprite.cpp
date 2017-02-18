@@ -10,13 +10,13 @@ namespace pegas
 	// Sprite class implementation
 	//------------------------------------------------------------------------
 	Sprite::Sprite()
-		:m_texture(NULL), m_currentFrame(-1), m_pivot(k_pivotCenter)
+		:m_texture(NULL), m_currentFrame(-1), m_pivot(k_pivotCenter), m_alpha(1.0f)
 	{
 
 	}
 
 	Sprite::Sprite(Texture* texture)
-		:m_texture(texture), m_currentFrame(-1), m_pivot(k_pivotCenter)
+		:m_texture(texture), m_currentFrame(-1), m_pivot(k_pivotCenter), m_alpha(1.0f)
 	{
 
 	}
@@ -246,6 +246,7 @@ namespace pegas
 		item.m_textureCoords[7] = frame->_toY;
 
 		item.m_zIndex = getZIndex();
+		item.m_alpha = m_sprite->getAlpha();
 
 		gfx->render(item);
 	}
