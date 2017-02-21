@@ -51,10 +51,34 @@
         <frame coords="638 365 665 405" ></frame>
         <frame coords="666 365 694 405" ></frame>
     </sprite>
+	<sprite name="digit_small" >
+        <frame coords="275 644 288 660" ></frame>
+		<frame coords="275 662 288 678" ></frame>
+        <frame coords="275 697 288 712" ></frame>
+		<frame coords="275 715 288 730" ></frame>
+		<frame coords="275 749 288 764" ></frame>
+		<frame coords="275 767 288 782" ></frame>
+		<frame coords="275 801 288 816" ></frame>
+        <frame coords="275 819 288 834" ></frame>
+        <frame coords="275 853 288 868" ></frame>
+        <frame coords="275 871 288 886" ></frame>
+    </sprite>
 	<sprite name="white_quad" >
         <frame coords="584 447 616 479" ></frame>
     </sprite>
 	<sprite name="black_quad" >
         <frame coords="584 412 616 444" ></frame>
+    </sprite>
+	<sprite name="medal_bronze" >
+        <frame coords="224 952 269 999" ></frame>
+    </sprite>
+	<sprite name="medal_silver" >
+        <frame coords="224 904 269 949" ></frame>
+    </sprite>
+	<sprite name="medal_gold" >
+        <frame coords="241 563 287 609" ></frame>
+    </sprite>
+	<sprite name="medal_new" >
+        <frame coords="223 999 258 1017" ></frame>
     </sprite>	
 </atlas>

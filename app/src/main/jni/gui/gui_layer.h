@@ -51,7 +51,7 @@ namespace pegas
 	public:
 		WidgetSceneNode(Widget* widget, SceneNode* parentNode = NULL);
 
-		virtual void setTransfrom(const Matrix4x4& transform);
+		virtual void setTransform(const Matrix4x4 &transform);
 		virtual Matrix4x4  getLocalTransform();
 		virtual void render(Gfx* gfx);
 		virtual Rect2D getBoundBox() { return m_cachedBoundBox; }

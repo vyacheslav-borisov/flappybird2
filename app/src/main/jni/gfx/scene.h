@@ -23,11 +23,11 @@ namespace pegas
 		virtual void onChildAttach(SceneNode* sender, SceneNode* child) {}
 		virtual void onChildDettach(SceneNode* sender, SceneNode* child) {}
 		virtual void onChildRemove(SceneNode* sender, SceneNode* child) {}
-		virtual void onTransfromChanged(SceneNode* sender) {}
+		virtual void onTransformChanged(SceneNode *sender) {}
 		virtual void onNodeRemoved(SceneNode* sender) {}
 	};
 
-	class SceneNode
+	class SceneNode: public SceneNodeEventListener
 	{
 	public:
 		SceneNode(SceneNode* parentNode = NULL);
@@ -44,9 +44,9 @@ namespace pegas
 		void removeListener(SceneNodeEventListener* listener);
 		void removeListenerSafe(SceneNodeEventListener* listener);
 
-		virtual void setTransfrom(const Matrix4x4& transform);
+		virtual void setTransform(const Matrix4x4 &transform);
 		virtual Matrix4x4  getLocalTransform();
-		virtual Matrix4x4  getWorldTransfrom();
+		virtual Matrix4x4  getWorldTransform();
 
 		void setZIndex(float zIndex) { m_zIndex = zIndex; }
 		float getZIndex() const { return m_zIndex; }
@@ -66,6 +66,7 @@ namespace pegas
 			k_removeChild
 		};
 		void notifyListeners(SceneNodeEventType e, SceneNode* child = NULL);
+		void updateChildTransforms(SceneNode* sender);
 
 	private:
 		typedef std::list<SceneNode*> ChildNodeList;
@@ -100,7 +101,7 @@ namespace pegas
 		void query(const Rect2D& rect, std::list<SceneNode*>& result);
 		void query(const Point2D& point, std::list<SceneNode*>& result);
 
-		virtual void onTransfromChanged(SceneNode* sender);
+		virtual void onTransformChanged(SceneNode *sender);
 		virtual void onNodeRemoved(SceneNode* sender);
 		virtual void onChildAttach(SceneNode* sender, SceneNode* child);
 	private:

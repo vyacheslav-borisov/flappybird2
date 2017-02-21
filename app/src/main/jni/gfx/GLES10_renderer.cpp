@@ -5,6 +5,8 @@
 #include "texture.h"
 #include "atlas.h"
 
+//#include <android/window.h>
+
 #define GLES_ON_ERROR(...) LOGE(__VA_ARGS__); \
 							destroy(); \
 							return STATUS_KO;
@@ -138,6 +140,8 @@ namespace pegas
 				GLES_ON_ERROR("!eglGetConfigAttrib");
 			}
 
+
+			//ANativeActivity_setWindowFlags(m_application->activity, AWINDOW_FLAG_FULLSCREEN|AWINDOW_FLAG_KEEP_SCREEN_ON, 0);
 			ANativeWindow_setBuffersGeometry(m_application->window, 0, 0, format);
 
 			m_surface = eglCreateWindowSurface(m_display, config, m_application->window, NULL);

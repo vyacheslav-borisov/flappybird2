@@ -75,9 +75,9 @@ namespace pegas
 		m_quadTree.query(point, result);
 	}
 
-	void SceneManager::onTransfromChanged(SceneNode* sender)
+	void SceneManager::onTransformChanged(SceneNode *sender)
 	{
-		LOGD_LOOP("SceneManager::onTransfromChanged [sender = 0x%X]");
+		LOGD_LOOP("SceneManager::onTransformChanged [sender = 0x%X]");
 
 		Rect2D newAABB = sender->getBoundBox();
 		LOGD_LOOP("AABB: x1: %.2f, y1: %.2f, x2: %.2f, y2: %.2f", newAABB._topLeft._x,
@@ -128,7 +128,7 @@ namespace pegas
 	{
 		LOGD_LOOP("SceneManager::onChildAttach [sender = 0x%X, child = 0x%X]", sender, child);
 		child->addListener(this);
-		onTransfromChanged(child);
+		onTransformChanged(child);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -236,16 +236,21 @@ namespace pegas
 		return m_visible;
 	}
 
-	void SceneNode::setTransfrom(const Matrix4x4& transform)
+	void SceneNode::setTransform(const Matrix4x4 &transform)
 	{
 		m_transform = transform;
 
 		notifyListeners(k_transfromChanged);
+		updateChildTransforms(this);
+	}
 
+	void SceneNode::updateChildTransforms(SceneNode* sender)
+	{
 		for(ChildNodeListIt it = m_childsNodes.begin();
 			it != m_childsNodes.end(); ++it)
 		{
-			(*it)->notifyListeners(k_transfromChanged);
+			(*it)->onTransformChanged(sender);
+			(*it)->updateChildTransforms(sender);
 		}
 	}
 
@@ -254,14 +259,14 @@ namespace pegas
 		return m_transform;
 	}
 
-	Matrix4x4  SceneNode::getWorldTransfrom()
+	Matrix4x4  SceneNode::getWorldTransform()
 	{
 		Matrix4x4 local = getLocalTransform();
 		Matrix4x4 world = local;
 
 		if(m_parentNode)
 		{
-			world = local * m_parentNode->getWorldTransfrom();
+			world = local * m_parentNode->getWorldTransform();
 		}
 
 		return world;
@@ -324,7 +329,7 @@ namespace pegas
 			switch(e)
 			{
 			case k_transfromChanged:
-				listener->onTransfromChanged(this);
+				listener->onTransformChanged(this);
 				break;
 			case k_nodeRemoved:
 				listener->onNodeRemoved(this);

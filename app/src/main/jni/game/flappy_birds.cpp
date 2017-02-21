@@ -1,8 +1,7 @@
 #include "../common.h"
 #include "flappy_birds.h"
 
-#include "../app/common_events.h"
-#include "../app/waiting.h"
+#include "../app/includes.h"
 
 namespace pegas
 {
@@ -74,6 +73,23 @@ namespace pegas
 	};
 	const EventType Event_Show_Flash::k_type = "Event_Show_Flash";
 
+	struct Event_Init_HUD: public Event
+	{
+	public:
+		Event_Init_HUD(Atlas* atlas, SceneManager* sceneManager)
+			:_atlas(atlas), _sceneManager(sceneManager)
+		{
+			LOGI("Event_Init_HUD()");
+		}
+
+		virtual EventType getType() const { return k_type; }
+		static const EventType k_type;
+
+		Atlas* _atlas;
+		SceneManager* _sceneManager;
+	};
+	const EventType Event_Init_HUD::k_type = "Event_Init_HUD";
+
 
 	//==============================================================================
 	const int32 Bird::k_collisionGroup = 1;
@@ -88,6 +104,10 @@ namespace pegas
 	float GameWorld::s_bornLine = 0.0f;
 	float GameWorld::s_deadLine = 0.0f;
 	float GameWorld::s_columnWindowHeight = 0.0f;
+
+	int GameWorld::k_bronzeMedalScores = 30;
+	int GameWorld::k_silverMedalScores = 55;
+	int GameWorld::k_goldMedalScores = 100;
 
 	float GameWorld::getSpriteScale()
 	{
@@ -116,7 +136,13 @@ namespace pegas
 
 	////////////////////////////////////////////////////////////////////////////////////
 	GameWorld::GameWorld()
-		:m_gameStarted(false), m_columnsSpawned(0), m_getReadyScreen(NULL)
+		:m_gameStarted(false),
+		 m_columnsSpawned(0),
+		 m_scores(HUDScores::k_bigDigits),
+		 m_bestScores(0),
+		 m_newBronzeMedal(true),
+		 m_newSilverMedal(true),
+		 m_newGoldMedal(true)
 	{
 	}
 
@@ -130,32 +156,22 @@ namespace pegas
 		eventManager->addEventListener(this, Event_Game_Stop::k_type);
 		eventManager->addEventListener(this, Event_Create_NextColumn::k_type);
 		eventManager->addEventListener(this, Event_Show_Flash::k_type);
-		eventManager->addEventListener(this, Event_Show_Scores::k_type);
+		eventManager->addEventListener(this, Event_Bird_Dead::k_type);
+		eventManager->addEventListener(this, Event_Add_Scores::k_type);
+		eventManager->addEventListener(this, Event_Init_HUD::k_type);
+
 
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Background::k_name)));
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Ground::k_name)));
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name)));
-
-		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(ScoreBoard::k_name)));
-
-		/*Rect2D screenRect = GameScreen::getScreenRect();
-		Vector3 spawnPoint(screenRect.width() * 0.5f, screenRect.height() * 0.5f, 0.0f);
-		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Column::k_name, spawnPoint)));*/
 	}
 
 	void GameWorld::onDestroy(IPlatformContext* context)
 	{
-		if(m_getReadyScreen != NULL)
-		{
-			SceneNode* rootNode = m_getReadyScreen->getParentNode();
-			rootNode->removeChild(m_getReadyScreen, true);
-		}
-
-		if (m_flashSceneNode != NULL)
-		{
-			SceneNode* rootNode = m_flashSceneNode->getParentNode();
-			rootNode->removeChild(m_flashSceneNode, true);
-		}
+		m_getReadyScreen.destroy();
+		m_gameOverScreen.destroy();
+		m_blindFlash.destroy();
+		m_scores.destroy();
 
 		EventManager* eventManager = context->getEventManager();
 		eventManager->removeEventListener(this);
@@ -182,80 +198,22 @@ namespace pegas
 		SpritePtr bird = atlas->getSprite("bird");
 		s_columnWindowHeight = bird->height() * s_spriteScale * 3.5;
 
-		//get ready screen
-		SceneNode* rootSceneNode = sceneManager->getRootNode();
-		m_getReadyScreen = new SceneNode(rootSceneNode);
+		initHUD(atlas, sceneManager);
+		//EventManager* eventManager = m_context->getEventManager();
+		//eventManager->pushEventToQueye(EventPtr(new Event_Init_HUD(atlas, sceneManager)));
+	}
 
-		SpritePtr spriteGetReady = atlas->getSprite("get_ready");
-		spriteGetReady->setPivot(Sprite::k_pivotCenter);
+	void GameWorld::initHUD(Atlas* atlas, SceneManager* sceneManager)
+	{
+		Rect2D screenRect = GameScreen::getScreenRect();
+		Vector3 scoresPosition;
+		scoresPosition._x = screenRect.width() * 0.6f;
+		scoresPosition._y = screenRect.height() * 0.15f;
 
-		SpritePtr spriteTutorial = atlas->getSprite("tutorial");
-		spriteTutorial->setPivot(Sprite::k_pivotCenter);
-
-		Matrix4x4 scale, translate, translate2;
-
-		scale.identity();
-		scale.scale(spriteGetReady->width() * s_spriteScale, spriteGetReady->height() * s_spriteScale, 1.0f);
-
-		translate.identity();
-		translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
-
-		SceneNode* sceneNodeGetReady = new SpriteSceneNode(spriteGetReady, m_getReadyScreen);
-		sceneNodeGetReady->setTransfrom(scale * translate);
-		sceneNodeGetReady->setZIndex(-6.0f);
-
-		scale.identity();
-		scale.scale(spriteTutorial->width() * s_spriteScale, spriteTutorial->height() * s_spriteScale, 1.0f);
-
-		translate2.identity();
-		translate2.translate(0.0f, (spriteTutorial->height() + spriteGetReady->height()) * s_spriteScale * 0.7f, 0.0f);
-
-		SceneNode* sceneNodeTutorial = new SpriteSceneNode(spriteTutorial, m_getReadyScreen);
-		sceneNodeTutorial->setTransfrom(scale * translate * translate2);
-		sceneNodeTutorial->setZIndex(-6.0f);
-
-		//game over screen
-		m_gameOverScreen = new SceneNode(rootSceneNode);
-		m_gameOverScreen->setVisible(false);
-
-		SpritePtr spriteGameOver = atlas->getSprite("game_over");
-		spriteGameOver->setPivot(Sprite::k_pivotCenter);
-
-		SpritePtr spriteScoresPanel = atlas->getSprite("scores_panel");
-		spriteScoresPanel->setPivot(Sprite::k_pivotCenter);
-
-		scale.identity();
-		scale.scale(spriteGetReady->width() * s_spriteScale, spriteGetReady->height() * s_spriteScale, 1.0f);
-
-		translate.identity();
-		translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
-
-		SceneNode* sceneNodeGameOver = new SpriteSceneNode(spriteGameOver, m_gameOverScreen);
-		sceneNodeGameOver->setZIndex(-6.0f);
-		sceneNodeGameOver->setTransfrom(scale * translate);
-
-		scale.identity();
-		scale.scale(spriteScoresPanel->width() * s_spriteScale, spriteScoresPanel->height() * s_spriteScale, 1.0f);
-
-		translate2.identity();
-		translate2.translate(0.0f, (spriteScoresPanel->height() + spriteGameOver->height()) * s_spriteScale * 0.7f, 0.0f);
-
-		SceneNode* sceneNodeScoresPanel = new SpriteSceneNode(spriteScoresPanel, m_gameOverScreen);
-		sceneNodeScoresPanel->setZIndex(-6.0f);
-		sceneNodeScoresPanel->setTransfrom(scale * translate * translate2);
-
-		//flash screen
-		m_flashSprite = atlas->getSprite("white_quad");
-		m_flashSprite->setPivot(Sprite::k_pivotLeftTop);
-		m_flashSprite->setAlpha(0.0f);
-
-		m_flashSceneNode = new SpriteSceneNode(m_flashSprite, rootSceneNode);
-
-		scale.identity();
-		scale.scale(screenRect.width(), screenRect.height(), 1.0f);
-
-		m_flashSceneNode->setTransfrom(scale);
-		m_flashSceneNode->setZIndex(-5.0f);
+		m_getReadyScreen.create(atlas, sceneManager);
+		m_gameOverScreen.create(atlas, sceneManager);
+		m_blindFlash.create(atlas, sceneManager);
+		m_scores.create(atlas, scoresPosition, sceneManager->getRootNode());
 	}
 
 	void GameWorld::onCreateCollisionHull(IPhysics* physicsManager)
@@ -273,13 +231,22 @@ namespace pegas
 	{
 		LOGI("GameWorld::handleEvent");
 
+		if(evt->getType() == Event_Init_HUD::k_type)
+		{
+			Event_Init_HUD* pEvent = evt->cast<Event_Init_HUD>();
+			initHUD(pEvent->_atlas, pEvent->_sceneManager);
+		}
+
 		if(evt->getType() == Event_Game_Start::k_type)
 		{
 			LOGI("evt->getType() == Event_Game_Start::k_type");
 
 			m_gameStarted = true;
 			m_spawnPosition._x = s_bornLine;
-			m_getReadyScreen->setVisible(false);
+
+			m_getReadyScreen.hide();
+			m_scores.resetScores();
+			m_scores.show();
 
 			for(int i = 0; i < 4; i++)
 			{
@@ -294,8 +261,8 @@ namespace pegas
 			EventManager* eventManager = m_context->getEventManager();
 			eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name)));
 
-			m_gameOverScreen->setVisible(false);
-			m_getReadyScreen->setVisible(true);
+			m_getReadyScreen.show();
+			m_gameOverScreen.hide();
 		}
 
 		if(evt->getType() == Event_Game_Stop::k_type)
@@ -316,14 +283,47 @@ namespace pegas
 		{
 			LOGI("evt->getType() == Event_Show_Flash::k_type");
 
-			m_flashSprite->setAlpha(1.0f);
+			m_blindFlash.blind();
 		}
 
-		if(evt->getType() == Event_Show_Scores::k_type)
+		if(evt->getType() == Event_Bird_Dead::k_type)
 		{
-			LOGI("evt->getType() == Event_Show_Scores::k_type");
+			LOGI("evt->getType() == Event_Bird_Dead::k_type");
 
-			m_gameOverScreen->setVisible(true);
+			int scores = m_scores.getScores();
+			m_scores.hide();
+
+			if(scores > m_bestScores)
+			{
+				m_bestScores = scores;
+			}
+
+			HUDGameOver::Medal medal = HUDGameOver::k_medalNone;
+			bool newMedal = false;
+			if(scores > k_goldMedalScores)
+			{
+				medal = HUDGameOver::k_medalGold;
+				newMedal = m_newGoldMedal;
+				m_newGoldMedal = false;
+			}else if(scores > k_silverMedalScores)
+			{
+				medal = HUDGameOver::k_medalSilver;
+				newMedal = m_newSilverMedal;
+				m_newSilverMedal = false;
+			}else if(scores > k_bronzeMedalScores)
+			{
+				medal = HUDGameOver::k_medalBronze;
+				newMedal = m_newBronzeMedal;
+				m_newBronzeMedal = false;
+			}
+
+			m_gameOverScreen.show(scores, m_bestScores, medal, newMedal);
+		}
+
+		if(evt->getType() == Event_Add_Scores::k_type)
+		{
+			LOGI("evt->getType() == Event_Add_Scores::k_type");
+			m_scores.addScores();
 		}
 	}
 
@@ -331,15 +331,9 @@ namespace pegas
 	{
 		float dt = deltaTime / 1000.0f;
 
-		if(m_flashSprite != NULL)
-		{
-			float alpha = m_flashSprite->getAlpha();
-			alpha -= 1.5f * dt;
-			if (alpha < 0.0f) {
-				alpha = 0.0f;
-			}
-			m_flashSprite->setAlpha(alpha);
-		}
+		m_getReadyScreen.update(dt);
+		m_gameOverScreen.update(dt);
+		m_blindFlash.update(dt);
 
 		if (m_gameStarted)
 		{
@@ -403,13 +397,9 @@ namespace pegas
 		scale.scale(screenRect.width(), screenRect.height(), 0.0f);
 
 		LOGI("creating background scene node...");
-		SpriteSceneNode* backgroundSceneNode = new SpriteSceneNode(background);
-		backgroundSceneNode->setTransfrom(scale);
+		SpriteSceneNode* backgroundSceneNode = new SpriteSceneNode(background, sceneManager->getRootNode());
+		backgroundSceneNode->setTransform(scale);
 		backgroundSceneNode->setZIndex(-10.0f);
-		SceneNode* rootNode = sceneManager->getRootNode();
-
-		LOGI("put background node to scene...");
-		rootNode->attachChild(backgroundSceneNode);
 	}
 
 	//===============================================================================
@@ -474,7 +464,7 @@ namespace pegas
 		LOGI("creating ground scene node #1...");
 		m_sceneNodes[0] = new SpriteSceneNode(ground);
 		m_sceneNodes[0]->setZIndex(-8.0f);
-		m_sceneNodes[0]->setTransfrom(world);
+		m_sceneNodes[0]->setTransform(world);
 
 
 		SceneNode* rootNode = sceneManager->getRootNode();
@@ -488,7 +478,7 @@ namespace pegas
 		LOGI("creating ground scene node #2...");
 		m_sceneNodes[1] = new SpriteSceneNode(ground);
 		m_sceneNodes[1]->setZIndex(-8.0f);
-		m_sceneNodes[1]->setTransfrom(world);
+		m_sceneNodes[1]->setTransform(world);
 
 		LOGI("put ground scene node #2 to scene...");
 		rootNode->attachChild(m_sceneNodes[1]);
@@ -509,19 +499,19 @@ namespace pegas
 
 		Matrix4x4 transform = m_sceneNodes[0]->getLocalTransform();
 		transform = transform * translate;
-		m_sceneNodes[0]->setTransfrom(transform);
+		m_sceneNodes[0]->setTransform(transform);
 
 		translate.identity();
 		translate.translate(transform._11, 0.0f, 0.0f);
 		transform = transform * translate;
-		m_sceneNodes[1]->setTransfrom(transform);
+		m_sceneNodes[1]->setTransform(transform);
 
 		Rect2D screenRect = GameScreen::getScreenRect();
 		Rect2D aabb = m_sceneNodes[0]->getBoundBox();
 		if(aabb._bottomRight._x <= screenRect._topLeft._x)
 		{
 			transform = transform * translate;
-			m_sceneNodes[0]->setTransfrom(transform);
+			m_sceneNodes[0]->setTransform(transform);
 
 			SceneNode* temp = m_sceneNodes[0];
 			m_sceneNodes[0] = m_sceneNodes[1];
@@ -572,7 +562,7 @@ namespace pegas
 		LOGI("creating column scene node k_up...");
 		m_sceneNodes[k_up] = new SpriteSceneNode(spriteColumnUP);
 		m_sceneNodes[k_up]->setZIndex(-9.0f);
-		m_sceneNodes[k_up]->setTransfrom(world);
+		m_sceneNodes[k_up]->setTransform(world);
 
 		translate.identity();
 		translate.translate(spawnPoint._x, (spawnPoint._y + (spriteHeight * 0.5f) + (windowHeight * 0.5f)), 0.0f);
@@ -582,7 +572,7 @@ namespace pegas
 		LOGI("creating column scene node k_down...");
 		m_sceneNodes[k_down] = new SpriteSceneNode(spriteColumnDown);
 		m_sceneNodes[k_down]->setZIndex(-9.0f);
-		m_sceneNodes[k_down]->setTransfrom(world);
+		m_sceneNodes[k_down]->setTransform(world);
 
 		//�������� ���� �� �����
 		SceneNode* rootNode = sceneManager->getRootNode();
@@ -604,7 +594,7 @@ namespace pegas
 		LOGI("creating column scene node k_window...");
 		m_sceneNodes[k_window] = new SceneNode(rootNode);
 		m_sceneNodes[k_window]->setZIndex(-9.0f);
-		m_sceneNodes[k_window]->setTransfrom(world);
+		m_sceneNodes[k_window]->setTransform(world);
 
 		LOGI("put column scene node k_window to scene...");
 		rootNode->attachChild(m_sceneNodes[k_window]);
@@ -639,7 +629,7 @@ namespace pegas
 		{
 			Matrix4x4 matTransform = m_sceneNodes[i]->getLocalTransform();
 			matTransform = matTransform * translate;
-			m_sceneNodes[i]->setTransfrom(matTransform);
+			m_sceneNodes[i]->setTransform(matTransform);
 		}
 
 		m_currentPosition = m_currentPosition * translate;
@@ -766,7 +756,7 @@ namespace pegas
 		LOGI("creating scene node...");
 		m_birdNode = new SpriteSceneNode(spriteBird);
 		m_birdNode->setZIndex(-7.0f);
-		m_birdNode->setTransfrom(matTransform);
+		m_birdNode->setTransform(matTransform);
 
 		LOGI("attach bird scene node to scene...");
 		SceneNode* rootNode = sceneManager->getRootNode();
@@ -940,7 +930,7 @@ namespace pegas
 
 			matTransform = matTransform * matPosition;
 		}
-		m_birdNode->setTransfrom(matTransform);
+		m_birdNode->setTransform(matTransform);
 		m_physicsManager->transformObject((int32)this, matTransform);
 	}
 
@@ -957,7 +947,7 @@ namespace pegas
 		position.translate(m_position._x, m_position._y, 0.0f);
 
 		matTransform = m_size * rotation * position;
-		m_birdNode->setTransfrom(matTransform);
+		m_birdNode->setTransform(matTransform);
 	}
 
 	float Bird::interpollateAngle(float velocity)
@@ -1087,11 +1077,11 @@ namespace pegas
 		m_physicsManager->unregisterCollisionHull((int32)this);
 	}
 
-	void CollidableObject::onTransfromChanged(SceneNode* sender)
+	void CollidableObject::onTransformChanged(SceneNode *sender)
 	{
-		//LOGW_TAG("Pegas_debug", "CollidableObject::onTransfromChanged");
+		//LOGW_TAG("Pegas_debug", "CollidableObject::onTransformChanged");
 
-		Matrix4x4 m = sender->getWorldTransfrom();
+		Matrix4x4 m = sender->getWorldTransform();
 		m_physicsManager->transformObject((int32)this, m);
 	}
 
@@ -1115,146 +1105,6 @@ namespace pegas
 				em->pushEventToQueye(EventPtr(new Event_Add_Scores()));
 			}
 		}
-	}
-
-	//=======================================================================================
-	const std::string ScoreBoard::k_name = "ScoreBoard";
-
-	void ScoreBoard::onCreate(IPlatformContext* context, void* pData)
-	{
-		LOGI("ScoreBoard::onCreate");
-
-		GameObject::onCreate(context, pData);
-
-		EventManager* em = context->getEventManager();
-		em->addEventListener(this, Event_Bird_Dead::k_type);
-		em->addEventListener(this, Event_Game_Start::k_type);
-		em->addEventListener(this, Event_Add_Scores::k_type);
-	}
-
-	void ScoreBoard::onDestroy(IPlatformContext* context)
-	{
-		LOGI("ScoreBoard::onDestroy");
-
-		LOGI("removing scene node...");
-		SceneNode* rootNode = m_boardSceneNode->getParentNode();
-		if(rootNode != NULL) {
-			rootNode->removeChild(m_boardSceneNode, true);
-			m_boardSceneNode = NULL;
-		}
-
-		LOGI("removing event listenrs...");
-		EventManager* em = context->getEventManager();
-		em->removeEventListener(this);
-
-		GameObject::onDestroy(context);
-	}
-
-	void ScoreBoard::onCreateSceneNode(Atlas* atlas, SceneManager* sceneManager, const Vector3& spawnPoint)
-	{
-		LOGI("ScoreBoard::onCreateSceneNode");
-
-		SceneNode* rootNode = sceneManager->getRootNode();
-		m_boardSceneNode = new SceneNode(rootNode);
-
-		float spriteScale = GameWorld::getSpriteScale();
-		float digitWidth, digitHeight, digitMargin, boardWidth;
-
-		for(int32 i = 0; i < k_numDigits; i++)
-		{
-			m_digits[i] = atlas->getSprite("digit_big");
-			if(m_digits[i] != NULL) {
-
-				if(i == 0)
-				{
-					digitWidth = m_digits[i]->width() * spriteScale;
-					digitHeight = m_digits[i]->height() * spriteScale;
-					digitMargin = digitWidth * 0.1f;
-					boardWidth = (digitWidth + digitMargin) * k_numDigits - digitMargin;
-				}
-
-				float offset = -(boardWidth * 0.5f) + (k_numDigits - i - 1) * (digitWidth + digitMargin);
-
-				m_digits[i]->setPivot(Sprite::k_pivotCenter);
-				m_digits[i]->setCurrentFrame(0);
-
-				Matrix4x4 scale;
-				scale.identity();
-				scale.scale(digitWidth, digitHeight, 1.0f);
-
-				Matrix4x4 trans;
-				trans.identity();
-				trans.translate(offset, 0.0f, 0.0f);
-
-				m_digitNodes[i] = new SpriteSceneNode(m_digits[i], m_boardSceneNode);
-				m_digitNodes[i]->setTransfrom(scale * trans);
-				m_digitNodes[i]->setZIndex(-6.0f);
-				m_digitNodes[i]->setVisible(false);
-			} else {
-				LOGE("AHTUNG!!!! m_digits[%d] = 0x%X", i, m_digits[i].get());
-				return;
-			}
-		}//for(int32 i = 0; i < k_numDigits; i++)
-
-		Matrix4x4 scale;
-		scale.identity();
-		scale.scale(1.0f, 1.0f, 1.0f);
-
-		Rect2D screenRect = GameScreen::getScreenRect();
-		Vector3 position;
-		position._x = screenRect.width() * 0.6f;
-		position._y = screenRect.height() * 0.15f;
-
-		Matrix4x4 trans;
-		trans.identity();
-		trans.translate(position._x, position._y, 0.0f);
-
-		m_boardSceneNode->setTransfrom(scale * trans);
-	}
-
-	void ScoreBoard::handleEvent(EventPtr evt)
-	{
-		LOGI("ScoreBoard::handleEvent");
-
-		if(evt->getType() == Event_Bird_Dead::k_type)
-		{
-			for(int32 i = 0; i < k_numDigits; i++)
-			{
-				m_digitNodes[i]->setVisible(false);
-			}
-
-			EventPtr evt(new Event_Show_Scores(m_scores));
-			EventManager* em = m_context->getEventManager();
-			em->pushEventToQueye(evt);
-		}
-
-		if(evt->getType() == Event_Game_Start::k_type)
-		{
-			m_scores = 0;
-			updateBoard();
-		}
-
-		if(evt->getType() == Event_Add_Scores::k_type)
-		{
-			m_scores++;
-			updateBoard();
-		}
-	}
-
-	void ScoreBoard::updateBoard()
-	{
-		int32 scores = m_scores;
-		int32 index = 0;
-		do
-		{
-			int32 digit = scores % 10;
-
-			m_digitNodes[index]->setVisible(true);
-			m_digits[index]->setCurrentFrame(digit);
-
-			index++;
-			scores = scores / 10;
-		}while(scores > 0);
 	}
 
 	//===============================================================================
@@ -1298,11 +1148,6 @@ namespace pegas
 			if(name == Obstacle::k_name)
 			{
 				return new Obstacle();
-			}
-
-			if(name == ScoreBoard::k_name)
-			{
-				return new ScoreBoard();
 			}
 
 			return NULL;

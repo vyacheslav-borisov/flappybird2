@@ -12,11 +12,11 @@ WidgetSceneNode::WidgetSceneNode(Widget* widget, SceneNode* parentNode)
 
 }
 
-void WidgetSceneNode::setTransfrom(const Matrix4x4& transform)
+void WidgetSceneNode::setTransform(const Matrix4x4 &transform)
 {
-	SceneNode::setTransfrom(transform);
+	SceneNode::setTransform(transform);
 
-	Matrix4x4 world = getWorldTransfrom();
+	Matrix4x4 world = getWorldTransform();
 	Vector3 topLeft = Vector3(0.0f, 0.0f, 0.0f) * world;
 	Vector3 bottomRight = Vector3(1.0f, 1.0f, 0.0f) * world;
 
@@ -54,7 +54,7 @@ Matrix4x4  WidgetSceneNode::getLocalTransform()
 
 void WidgetSceneNode::render(Gfx* gfx)
 {
-	Matrix4x4 world = getWorldTransfrom();
+	Matrix4x4 world = getWorldTransform();
 	gfx->setWorldMatrix(world);
 	if(m_widget)
 	{

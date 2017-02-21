@@ -3,6 +3,8 @@
 
 #include "../system/log.h"
 
+#include <android/window.h>
+
 namespace pegas
 {
 	AndroidGameApplication::AndroidGameApplication(android_app* context)
@@ -35,6 +37,8 @@ namespace pegas
 	status AndroidGameApplication::onActivate()
 	{
 		LOGI("AndroidGameApplication::onActivate");
+
+		//ANativeActivity_setWindowFlags(m_androidAppContext->activity, AWINDOW_FLAG_KEEP_SCREEN_ON, 0);
 
 		if(!init())
 		{
@@ -104,6 +108,17 @@ namespace pegas
 	void AndroidGameApplication::onCreateWindow()
 	{
 		LOGI("AndroidGameApplication::onCreateWindow");
+
+
+		/* //пока убрал, вызов этой хрени приводит к зависанию приложения
+		 * //гугление по проблеме ни к чему не привело
+		 * uint32_t flags = 0;
+		flags |= AWINDOW_FLAG_FULLSCREEN;
+		flags |= AWINDOW_FLAG_KEEP_SCREEN_ON;
+
+		ANativeActivity_setWindowFlags(m_androidAppContext->activity, flags, 0);*/
+
+		LOGI("AndroidGameApplication::onCreateWindow end");
 	}
 
 	void AndroidGameApplication::onDestroyWindow()

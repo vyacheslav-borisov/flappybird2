@@ -97,40 +97,20 @@ namespace pegas
 	SpriteSceneNode::SpriteSceneNode(SpritePtr sprite, SceneNode* parentNode)
 		:SceneNode(parentNode), m_sprite(sprite), m_recalcAABB(false)
 	{
-		if(parentNode != NULL)
-		{
-			parentNode->addListener(this);
-		}
 	}
 
-	void SpriteSceneNode::setTransfrom(const Matrix4x4& transform)
+	void SpriteSceneNode::setTransform(const Matrix4x4 &transform)
 	{
 		m_recalcAABB = true;
 
-		SceneNode::setTransfrom(transform);
+		SceneNode::setTransform(transform);
 	}
 
-	void SpriteSceneNode::onTransfromChanged(SceneNode* sender)
+	void SpriteSceneNode::onTransformChanged(SceneNode *sender)
 	{
 		//родительский узел изменил положение или размер
 		//мы также должны пересчитать позицию
 		recalcAABB();
-	}
-
-	void SpriteSceneNode::onChildRemove(SceneNode* sender, SceneNode* child)
-	{
-		if(child == this)
-		{
-			getParentNode()->removeListenerSafe(this);
-		}
-	}
-
-	void SpriteSceneNode::onChildDettach(SceneNode* sender, SceneNode* child)
-	{
-		if(child == this)
-		{
-			getParentNode()->removeListenerSafe(this);
-		}
 	}
 
 	Rect2D SpriteSceneNode::getBoundBox()
@@ -147,7 +127,7 @@ namespace pegas
 	{
 		m_recalcAABB = false;
 
-		Matrix4x4 world = getWorldTransfrom();
+		Matrix4x4 world = getWorldTransform();
 		float zIndex = getZIndex();
 
 		if(m_sprite->getPivot() == Sprite::k_pivotLeftTop)

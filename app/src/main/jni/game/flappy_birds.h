@@ -9,7 +9,7 @@
 #define GAME_FLAPPY_BIRDS_H_
 
 #include "game_screen.h"
-#include "../app/event_system.h"
+#include "HUD.h"
 
 namespace pegas
 {
@@ -36,6 +36,7 @@ namespace pegas
 		virtual void handleEvent(EventPtr evt);
 		virtual void update(MILLISECONDS deltaTime);
 	private:
+		void initHUD(Atlas* atlas, SceneManager* sceneManager);
 		void spawnNewColumn();
 
 		Vector3 m_spawnPosition;
@@ -43,18 +44,25 @@ namespace pegas
 		float 	m_offset;
 		bool	m_gameStarted;
 
-		SceneNode* m_getReadyScreen;
+		HUDGetReady 	m_getReadyScreen;
+		HUDGameOver 	m_gameOverScreen;
+		HUDBlindFlash 	m_blindFlash;
+		HUDScores	  	m_scores;
 
-		SceneNode* m_gameOverScreen;
-
-		SceneNode* m_flashSceneNode;
-		SpritePtr  m_flashSprite;
+		int m_bestScores;
+		bool m_newBronzeMedal;
+		bool m_newSilverMedal;
+		bool m_newGoldMedal;
 	private:
 		static float s_columnVelocity;
 		static float s_spriteScale;
 		static float s_bornLine;
 		static float s_deadLine;
 		static float s_columnWindowHeight;
+
+		static int k_bronzeMedalScores;
+		static int k_silverMedalScores;
+		static int k_goldMedalScores;
 	};
 
 	class Background: public GameObject
@@ -201,7 +209,7 @@ namespace pegas
 		virtual void onCreateCollisionHull(IPhysics* physicsManager);
 		virtual void onDestroy(IPlatformContext* context);
 
-		virtual void onTransfromChanged(SceneNode* sender);
+		virtual void onTransformChanged(SceneNode *sender);
 		virtual void onNodeRemoved(SceneNode* sender);
 
 	private:
@@ -233,36 +241,6 @@ namespace pegas
 	public:
 		Obstacle() {}
 		virtual std::string getName() { return k_name; }
-	};
-
-	class ScoreBoard : public GameObject, public IEventListener
-	{
-	public:
-		static const std::string k_name;
-
-	public:
-		virtual std::string getName()  { return k_name; }
-
-		virtual void onCreate(IPlatformContext* context, void* pData);
-		virtual void onDestroy(IPlatformContext* context);
-		virtual void onCreateSceneNode(Atlas* atlas, SceneManager* sceneManager, const Vector3& spawnPoint);
-
-		virtual ListenerType getListenerName() { return k_name; }
-		virtual void handleEvent(EventPtr evt);
-
-	private:
-		void updateBoard();
-
-		int32 m_scores;
-
-		enum
-		{
-			k_numDigits = 6
-		};
-
-		SceneNode* m_boardSceneNode;
-		SceneNode* m_digitNodes[k_numDigits];
-		SpritePtr m_digits[k_numDigits];
 	};
 }
 

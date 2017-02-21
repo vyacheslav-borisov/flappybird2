@@ -70,18 +70,16 @@ namespace pegas
 
 	typedef SmartPointer<Sprite> SpritePtr;
 
-	class SpriteSceneNode: public SceneNode, public SceneNodeEventListener
+	class SpriteSceneNode: public SceneNode
 	{
 	public:
 		SpriteSceneNode(SpritePtr sprite, SceneNode* parentNode = NULL);
 
-		virtual void onTransfromChanged(SceneNode* sender);
-		virtual void onChildRemove(SceneNode* sender, SceneNode* child);
-		virtual void onChildDettach(SceneNode* sender, SceneNode* child);
-
-		virtual void setTransfrom(const Matrix4x4& transform);
+		virtual void onTransformChanged(SceneNode *sender);
+		virtual void setTransform(const Matrix4x4 &transform);
 		virtual Rect2D getBoundBox();
 		virtual void render(Gfx* gfx);
+
 	private:
 		void recalcAABB();
 

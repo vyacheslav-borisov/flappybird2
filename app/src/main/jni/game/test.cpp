@@ -96,7 +96,7 @@ namespace pegas
 		Matrix4x4 empty;
 		empty.identity();
 		m_sceneNode = new SpriteSceneNode(m_sprite);
-		m_sceneNode->setTransfrom(empty);
+		m_sceneNode->setTransform(empty);
 	}
 
 	void TestScreen::destroy(IPlatformContext* context)
