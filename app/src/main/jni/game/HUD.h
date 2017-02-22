@@ -8,6 +8,21 @@
 
 namespace pegas
 {
+    class HUDMainMenu
+    {
+    public:
+        HUDMainMenu();
+        ~HUDMainMenu();
+
+        bool create(Atlas* atlas, SceneManager* sceneManager);
+        void destroy();
+        void show();
+        void hide();
+
+    private:
+        SceneNode* m_mainMenu;
+    };
+
     class HUDScores
     {
     public:
@@ -105,7 +120,32 @@ namespace pegas
         SpritePtr  m_flashSprite;
     };
 
+    class HUDFader
+    {
+    public:
+        HUDFader();
+        ~HUDFader();
 
+        bool create(Atlas* atlas, SceneManager* sceneManager);
+        void update(float dt);
+        void destroy();
+        void fadein(float time);
+        void fadeout(float time);
+
+    private:
+        enum
+        {
+            k_None = 0,
+            k_Fadein,
+            k_Fadeout
+        };
+
+        SceneNode*  m_fader;
+        SpritePtr   m_spriteFader;
+        float       m_leftTime;
+        float       m_time;
+        int32       m_mode;
+    };
 
 }
 

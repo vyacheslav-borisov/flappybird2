@@ -137,6 +137,7 @@ namespace pegas
 	////////////////////////////////////////////////////////////////////////////////////
 	GameWorld::GameWorld()
 		:m_gameStarted(false),
+		 m_mainMenuMode(true),
 		 m_columnsSpawned(0),
 		 m_scores(HUDScores::k_bigDigits),
 		 m_bestScores(0),
@@ -159,11 +160,12 @@ namespace pegas
 		eventManager->addEventListener(this, Event_Bird_Dead::k_type);
 		eventManager->addEventListener(this, Event_Add_Scores::k_type);
 		eventManager->addEventListener(this, Event_Init_HUD::k_type);
+		eventManager->addEventListener(this, Event_GUI_FadeinComplete::k_type);
 
 
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Background::k_name)));
 		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Ground::k_name)));
-		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name)));
+		eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name, (void*)this)));
 	}
 
 	void GameWorld::onDestroy(IPlatformContext* context)
@@ -172,9 +174,13 @@ namespace pegas
 		m_gameOverScreen.destroy();
 		m_blindFlash.destroy();
 		m_scores.destroy();
+		m_fader.destroy();
+		m_mainMenu.destroy();
 
 		EventManager* eventManager = context->getEventManager();
 		eventManager->removeEventListener(this);
+
+		context->removeMouseController(this);
 
 		GameObject::onDestroy(context);
 	}
@@ -214,6 +220,15 @@ namespace pegas
 		m_gameOverScreen.create(atlas, sceneManager);
 		m_blindFlash.create(atlas, sceneManager);
 		m_scores.create(atlas, scoresPosition, sceneManager->getRootNode());
+		m_fader.create(atlas, sceneManager);
+		m_mainMenu.create(atlas, sceneManager);
+
+		m_getReadyScreen.hide();
+		m_gameOverScreen.hide();
+		m_scores.hide();
+		m_mainMenu.show();
+
+		m_context->addMouseController(this);
 	}
 
 	void GameWorld::onCreateCollisionHull(IPhysics* physicsManager)
@@ -227,6 +242,20 @@ namespace pegas
 		physicsManager->setCollisionPairGroupFlag(Trigger::k_collisionGroup, Obstacle::k_collisionGroup, false);
 	}
 
+	void GameWorld::onMouseButtonDown(MouseButton button, float x, float y, MouseFlags flags)
+	{
+		if(!m_mainMenuMode) return;
+
+		m_mainMenuMode = false;
+		m_fader.fadein(1.0f);
+
+		Waiting* waiting = new Waiting(1.1f);
+		waiting->addFinalEvent(EventPtr(new Event_GUI_FadeinComplete()));
+
+		ProcessManager* processManager = m_context->getProcessManager();
+		processManager->attachProcess(ProcessPtr(waiting));
+	}
+
 	void GameWorld::handleEvent(EventPtr evt)
 	{
 		LOGI("GameWorld::handleEvent");
@@ -235,6 +264,14 @@ namespace pegas
 		{
 			Event_Init_HUD* pEvent = evt->cast<Event_Init_HUD>();
 			initHUD(pEvent->_atlas, pEvent->_sceneManager);
+		}
+
+		if(evt->getType() == Event_GUI_FadeinComplete::k_type)
+		{
+			m_fader.fadeout(1.0f);
+
+			EventManager* eventManager = m_context->getEventManager();
+			eventManager->pushEventToQueye(EventPtr(new Event_Game_Restart()));
 		}
 
 		if(evt->getType() == Event_Game_Start::k_type)
@@ -261,8 +298,9 @@ namespace pegas
 			EventManager* eventManager = m_context->getEventManager();
 			eventManager->pushEventToQueye(EventPtr(new Event_Create_GameObject(Bird::k_name)));
 
-			m_getReadyScreen.show();
+			m_mainMenu.hide();
 			m_gameOverScreen.hide();
+			m_getReadyScreen.show();
 		}
 
 		if(evt->getType() == Event_Game_Stop::k_type)
@@ -334,6 +372,7 @@ namespace pegas
 		m_getReadyScreen.update(dt);
 		m_gameOverScreen.update(dt);
 		m_blindFlash.update(dt);
+		m_fader.update(dt);
 
 		if (m_gameStarted)
 		{
@@ -714,6 +753,7 @@ namespace pegas
 		 , m_mode(0)
 		 , m_physicsManager(NULL)
 		 , m_isAboutToDestroy(false)
+		 , m_mainMenuMode(false)
 	{
 
 	}
@@ -731,7 +771,7 @@ namespace pegas
 		m_fallAngle = -Math::PI / 3.0;
 
 		Rect2D screenRect = GameScreen::getScreenRect();
-		m_position._x = screenRect.width() * 0.3f;
+		m_position._x = m_mainMenuMode ? (screenRect.width() * 0.5f) : (screenRect.width() * 0.3f);
 		m_position._y = Ground::getGroundLevel() * 0.6f;
 
 		LOGI("creating sprite...");
@@ -776,6 +816,8 @@ namespace pegas
 
 	void Bird::onCreateCollisionHull(IPhysics* physicsManager)
 	{
+		if(m_mainMenuMode) return;
+
 		LOGI("Bird::onCreateCollisionHull this = %x", this);
 
 		LOGI("register collidable circle");
@@ -931,7 +973,11 @@ namespace pegas
 			matTransform = matTransform * matPosition;
 		}
 		m_birdNode->setTransform(matTransform);
-		m_physicsManager->transformObject((int32)this, matTransform);
+
+		if(!m_mainMenuMode)
+		{
+			m_physicsManager->transformObject((int32) this, matTransform);
+		}
 	}
 
 	void Bird::setAngle(float angle)
@@ -988,8 +1034,17 @@ namespace pegas
 
 		GameObject::onCreate(context, pData);
 
-		LOGI("add mouse controller");
-		context->addMouseController(this);
+		if(pData != NULL)
+		{
+			GameWorld *gameWorld = (GameWorld *) pData;
+			m_mainMenuMode = gameWorld->isMenuMode();
+		}
+
+		if(!m_mainMenuMode)
+		{
+			LOGI("add mouse controller");
+			context->addMouseController(this);
+		}
 
 		LOGI("add event listener");
 		EventManager* eventManager = context->getEventManager();
@@ -1012,15 +1067,18 @@ namespace pegas
 			m_birdNode = NULL;
 		}
 
-		LOGI("unregister collision hull...");
-		m_physicsManager->unregisterCollisionHull((int32)this);
+		if(!m_mainMenuMode)
+		{
+			LOGI("remove mouse controller...");
+			context->removeMouseController(this);
+
+			LOGI("unregister collision hull...");
+			m_physicsManager->unregisterCollisionHull((int32)this);
+		}
 
 		LOGI("remove event listener...");
 		EventManager* eventManager = context->getEventManager();
 		eventManager->removeEventListener(this);
-
-		LOGI("remove mouse controller...");
-		context->removeMouseController(this);
 
 		GameObject::onDestroy(context);
 

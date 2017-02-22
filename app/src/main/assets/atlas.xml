@@ -30,6 +30,9 @@
     <sprite name="get_ready" >
         <frame coords="588 116 780 170" ></frame>
     </sprite>
+	<sprite name="main_menu_title" >
+        <frame coords="700 180 881 231" ></frame>
+    </sprite>
     <sprite name="game_over" >
         <frame coords="782 115 985 160" ></frame>
     </sprite>
@@ -80,5 +83,15 @@
     </sprite>
 	<sprite name="medal_new" >
         <frame coords="223 999 258 1017" ></frame>
-    </sprite>	
+    </sprite>
+
+	<sprite name="button_start" >
+        <frame coords="707 234 812 294" ></frame>
+    </sprite>
+	<sprite name="button_winners" >
+        <frame coords="827 234 933 294" ></frame>
+    </sprite>
+	<sprite name="button_rate" >
+        <frame coords="929 1 992 37" ></frame>
+    </sprite>
 </atlas>

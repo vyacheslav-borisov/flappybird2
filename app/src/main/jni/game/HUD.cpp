@@ -5,6 +5,94 @@
 
 namespace pegas {
     //===================================================================================================
+    //  main menu screen
+    //===================================================================================================
+    HUDMainMenu::HUDMainMenu()
+        :m_mainMenu(NULL)
+    {
+
+    }
+
+    HUDMainMenu::~HUDMainMenu()
+    {
+        destroy();
+    }
+
+    bool HUDMainMenu::create(Atlas* atlas, SceneManager* sceneManager)
+    {
+        m_mainMenu = new SceneNode(sceneManager->getRootNode());
+        m_mainMenu->setVisible(false);
+
+        //game title
+        SpritePtr spriteGameTitle = atlas->getSprite("main_menu_title");
+        spriteGameTitle->setPivot(Sprite::k_pivotCenter);
+
+        Rect2D screenRect = GameScreen::getScreenRect();
+        float spriteScale = GameWorld::getSpriteScale();
+
+        Matrix4x4 scale;
+        scale.identity();
+        scale.scale(spriteGameTitle->width() * spriteScale, spriteGameTitle->height() * spriteScale, 0.0f);
+
+        Matrix4x4 translate;
+        translate.identity();
+        translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
+
+        SceneNode* title = new SpriteSceneNode(spriteGameTitle, m_mainMenu);
+        title->setZIndex(-6.0f);
+        title->setTransform(scale * translate);
+        title->setVisible(true);
+
+        //fake start button
+        SpritePtr spriteFakeStartButton = atlas->getSprite("button_start");
+        spriteFakeStartButton->setPivot(Sprite::k_pivotCenter);
+
+        scale.identity();
+        scale.scale(spriteFakeStartButton->width() * spriteScale, spriteFakeStartButton->height() * spriteScale, 0.0f);
+
+        translate.identity();
+        translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.65f, 0.0f);
+
+        SceneNode* fakeStartButton = new SpriteSceneNode(spriteFakeStartButton, m_mainMenu);
+        fakeStartButton->setZIndex(-6.0f);
+        fakeStartButton->setTransform(scale * translate);
+        fakeStartButton->setVisible(true);
+
+
+        //copyright
+        //TODO: add later
+
+        return true;
+    }
+
+    void HUDMainMenu::destroy()
+    {
+        if(m_mainMenu != NULL)
+        {
+            SceneNode* root = m_mainMenu->getParentNode();
+            root->removeChild(root, true);
+
+            m_mainMenu = NULL;
+        }
+    }
+
+    void HUDMainMenu::show()
+    {
+        if(m_mainMenu != NULL)
+        {
+            m_mainMenu->setVisible(true);
+        }
+    }
+
+    void HUDMainMenu::hide()
+    {
+        if(m_mainMenu != NULL)
+        {
+            m_mainMenu->setVisible(false);
+        }
+    }
+
+    //===================================================================================================
     //  get ready screen
     //===================================================================================================
     HUDGetReady::HUDGetReady()
@@ -126,7 +214,7 @@ namespace pegas {
         scale.scale(spriteGameOver->width() * spriteScale, spriteGameOver->height() * spriteScale, 1.0f);
 
         translate.identity();
-        translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.3f, 0.0f);
+        translate.translate(screenRect.width() * 0.5f, screenRect.height() * 0.2f, 0.0f);
 
         SceneNode* sceneNodeGameOver = new SpriteSceneNode(spriteGameOver, m_gameOverScreen);
         sceneNodeGameOver->setZIndex(-6.0f);
@@ -142,6 +230,22 @@ namespace pegas {
         SceneNode* sceneNodeScoresPanel = new SpriteSceneNode(spriteScoresPanel, m_gameOverScreen);
         sceneNodeScoresPanel->setZIndex(-6.0f);
         sceneNodeScoresPanel->setTransform(scale * translate * translate2);
+
+        //fake start button
+        SpritePtr spriteFakeStartButton = atlas->getSprite("button_start");
+        spriteFakeStartButton->setPivot(Sprite::k_pivotCenter);
+
+        scale.identity();
+        scale.scale(spriteFakeStartButton->width() * spriteScale, spriteFakeStartButton->height() * spriteScale, 0.0f);
+
+        Matrix4x4 translate5;
+        translate5.identity();
+        translate5.translate(0.0f, (spriteFakeStartButton->height() + spriteScoresPanel->height()) * spriteScale * 0.6f, 0.0f);
+
+        SceneNode* fakeStartButton = new SpriteSceneNode(spriteFakeStartButton, m_gameOverScreen);
+        fakeStartButton->setZIndex(-6.0f);
+        fakeStartButton->setTransform(scale * translate * translate2 * translate5);
+        fakeStartButton->setVisible(true);
 
         //score digits
         Matrix4x4 scoresPanelTransform = sceneNodeScoresPanel->getWorldTransform();
@@ -498,5 +602,105 @@ namespace pegas {
             index++;
             scores = scores / 10;
         }while(scores > 0);
+    }
+
+    //=====================================================================================================
+    //
+    //=====================================================================================================
+    HUDFader::HUDFader()
+        :m_fader(NULL), m_time(0.0f), m_leftTime(0.0f), m_mode(k_None)
+    {
+
+    }
+
+    /*
+     * SceneNode*  m_fader;
+        float       m_time;
+        int32       m_mode;
+     * */
+
+    HUDFader::~HUDFader()
+    {
+        destroy();
+    }
+
+    bool HUDFader::create(Atlas* atlas, SceneManager* sceneManager)
+    {
+        m_spriteFader = atlas->getSprite("black_quad");
+        m_spriteFader->setPivot(Sprite::k_pivotLeftTop);
+
+        m_fader = new SpriteSceneNode(m_spriteFader, sceneManager->getRootNode());
+        m_fader->setVisible(false);
+        m_fader->setZIndex(-5.0f);
+
+        Rect2D screenRect = GameScreen::getScreenRect();
+        Matrix4x4 scale;
+        scale.identity();
+        scale.scale(screenRect.width(), screenRect.height(), 0.0f);
+
+        m_fader->setTransform(scale);
+
+        return true;
+    }
+
+    void HUDFader::update(float dt)
+    {
+        if(m_fader == NULL) return;
+        if(m_mode == k_None) return;
+        if(m_leftTime <= 0.0f) return;
+
+        if(m_mode == k_Fadein && m_time > 0.0f)
+        {
+            m_leftTime -= dt;
+            float alpha = 1.0 - (m_leftTime / m_time);
+            if(alpha > 1.0f) alpha = 1.0f;
+
+            m_spriteFader->setAlpha(alpha);
+        }
+
+        if(m_mode == k_Fadeout && m_time > 0.0f)
+        {
+            m_leftTime -= dt;
+            float alpha = m_leftTime / m_time;
+            if(alpha < 0.0f) alpha = 0.0f;
+
+            m_spriteFader->setAlpha(alpha);
+        }
+
+        if(m_leftTime <= 0.0f)
+        {
+            m_mode = k_None;
+        }
+    }
+
+    void HUDFader::destroy()
+    {
+        if(m_fader != NULL)
+        {
+            SceneNode* root = m_fader->getParentNode();
+            root->removeChild(m_fader, true);
+
+            m_fader = NULL;
+        }
+    }
+
+    void HUDFader::fadein(float time)
+    {
+        if(m_fader == NULL) return;
+
+        m_time = m_leftTime = time;
+        m_mode = k_Fadein;
+        m_spriteFader->setAlpha(0.0f);
+        m_fader->setVisible(true);
+    }
+
+    void HUDFader::fadeout(float time)
+    {
+        if(m_fader == NULL) return;
+
+        m_time = m_leftTime = time;
+        m_mode = k_Fadeout;
+        m_spriteFader->setAlpha(1.0f);
+        m_fader->setVisible(true);
     }
 }

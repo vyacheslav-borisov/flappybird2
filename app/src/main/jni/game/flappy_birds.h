@@ -13,7 +13,7 @@
 
 namespace pegas
 {
-	class GameWorld: public GameObject, public IEventListener
+	class GameWorld: public GameObject, public IEventListener, public IMouseController
 	{
 	public:
 		static const std::string k_name;
@@ -29,12 +29,20 @@ namespace pegas
 		virtual std::string getName() { return k_name; }
 		virtual ListenerType getListenerName() { return k_name; }
 
+		bool isMenuMode() const { return m_mainMenuMode; }
+		bool isGameStarted() const { return m_gameStarted; }
+
 		virtual void onCreate(IPlatformContext* context, void* pData);
 		virtual void onDestroy(IPlatformContext* context);
 		virtual void onCreateSceneNode(Atlas* atlas, SceneManager* sceneManager, const Vector3& spawnPoint);
 		virtual void onCreateCollisionHull(IPhysics* physicsManager);
 		virtual void handleEvent(EventPtr evt);
 		virtual void update(MILLISECONDS deltaTime);
+
+		virtual void onMouseButtonDown(MouseButton button, float x, float y, MouseFlags flags);
+		virtual void onMouseButtonUp(MouseButton button, float x, float y, MouseFlags flags) {}
+		virtual void onMouseMove(float x, float y, MouseFlags flags) {}
+		virtual void onMouseWheel(NumNothes wheel, MouseFlags flags) {}
 	private:
 		void initHUD(Atlas* atlas, SceneManager* sceneManager);
 		void spawnNewColumn();
@@ -43,11 +51,14 @@ namespace pegas
 		int     m_columnsSpawned;
 		float 	m_offset;
 		bool	m_gameStarted;
+		bool    m_mainMenuMode;
 
 		HUDGetReady 	m_getReadyScreen;
 		HUDGameOver 	m_gameOverScreen;
 		HUDBlindFlash 	m_blindFlash;
 		HUDScores	  	m_scores;
+		HUDMainMenu     m_mainMenu;
+		HUDFader		m_fader;
 
 		int m_bestScores;
 		bool m_newBronzeMedal;
@@ -197,6 +208,7 @@ namespace pegas
 		ProcessPtr		m_animation;
 		int 			m_mode;
 		bool			m_isAboutToDestroy;
+		bool 			m_mainMenuMode;
 	};
 
 
